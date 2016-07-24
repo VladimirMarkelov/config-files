@@ -95,6 +95,7 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 noremap j gj
 noremap k gk
 
+set colorcolumn=80
 
 set diffexpr=MyDiff()
 function MyDiff()
