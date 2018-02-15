@@ -109,6 +109,7 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 
 noremap j gj
 noremap k gk
+nnoremap Q <Nop>
 
 set colorcolumn=80
 
