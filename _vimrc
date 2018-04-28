@@ -10,6 +10,7 @@ set rtp+=~/vimfiles/bundle/Vundle.vim
 let path='~/vimfiles/bundle'
 
 call vundle#begin(path)
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'fatih/vim-go'
 Plugin 'vim-scripts/LargeFile'
 Plugin 'tpope/vim-surround.git'
@@ -23,6 +24,28 @@ Plugin 'luochen1990/rainbow'
 Plugin 'tpope/vim-repeat.git'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'godlygeek/tabular'
+
+" Plugin 'sk1418/howmuch'
+Plugin 'arecarn/crunch.vim'
+
+Plugin 'nishigori/increment-activator'
+Plugin 'adie/blockdiff'
+" Plugin 'exvim/ex-easyhl'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'google/vim-searchindex'
+
+" Plugin 'chrisbra/colorizer' " requires vim 8.0
+" Plugin 'lilydjwg/colorizer' " older one but works
+
+" Plugin 'chrisbra/unicode.vim'
+" Plugin 'kana/vim-smartword'
+" Plugin 'Visual-Mark'
+Plugin 'diffchar.vim'
+Plugin 'bling/vim-airline'
+Plugin 'joereynolds/place.vim'
+Plugin 'jmcantrell/vim-numbered'
+Plugin 'lukhio/vim-mapping-conflicts'
+Plugin 'andrewradev/linediff.vim'
 
 call vundle#end()
 
@@ -98,7 +121,8 @@ imap <DOWN> <ESC>gja
 "set guifont=Lucida_Console:h10
 "set guifont=Meslo_LG_S:h10
 "set guifont=Input:h10
-set guifont=DejaVu_Sans_Mono:h10
+" set guifont=DejaVu_Sans_Mono:h10
+set guifont=AverageMono:h10
 set ff=unix
 set encoding=utf-8
 setglobal fileencoding=utf-8
@@ -109,7 +133,6 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 
 noremap j gj
 noremap k gk
-nnoremap Q <Nop>
 
 set colorcolumn=80
 
