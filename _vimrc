@@ -15,7 +15,7 @@ Plugin 'fatih/vim-go'
 Plugin 'vim-scripts/LargeFile'
 Plugin 'tpope/vim-surround.git'
 Plugin 'rust-lang/rust.vim'
-Plugin 'KabbAmine/zeavim.vim'
+" Plugin 'KabbAmine/zeavim.vim'
 Plugin 'wellle/targets.vim'
 " Plugin 'easymotion/vim-easymotion'
 " Plugin 'tomtom/tcomment_vim'
@@ -46,6 +46,12 @@ Plugin 'joereynolds/place.vim'
 Plugin 'jmcantrell/vim-numbered'
 Plugin 'lukhio/vim-mapping-conflicts'
 Plugin 'andrewradev/linediff.vim'
+" Plugin 'altercation/vim-colors-solarized'
+Plugin 'terryma/vim-expand-region'
+" Plugin 'justinmk/vim-sneak'
+Plugin 'tommcdo/vim-lion'
+Plugin 'jmcantrell/vim-diffchanges'
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
 
@@ -57,7 +63,7 @@ let g:go_fmt_fail_silently = 0
 let g:go_fmt_autosave = 0
 let g:go_metalinter_autosave = 0
 let g:go_asmfmt_autosave = 0
-let g:zv_zeal_executable = 'c:\Users\vvm\Utils\Zeal\zeal.exe'
+" let g:zv_zeal_executable = 'c:\Users\vvm\Utils\Zeal\zeal.exe'
 let g:rainbow_active = 1
 
 " set statusline+=%#warningmsg#
@@ -122,7 +128,8 @@ imap <DOWN> <ESC>gja
 "set guifont=Meslo_LG_S:h10
 "set guifont=Input:h10
 " set guifont=DejaVu_Sans_Mono:h10
-set guifont=AverageMono:h10
+set guifont=DejaVuSansMono_NF:h10
+" set guifont=AverageMono:h10
 set ff=unix
 set encoding=utf-8
 setglobal fileencoding=utf-8
