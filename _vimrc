@@ -4,56 +4,46 @@ set nocompatible
 "behave mswin
 
 filetype off
-"call pathogen#infect()
-"call pathogen#runtime_append_all_bundles()
-set rtp+=~/vimfiles/bundle/Vundle.vim
-let path='~/vimfiles/bundle'
+let path='~/vimfiles/plug-bundle'
 
-call vundle#begin(path)
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'fatih/vim-go'
-Plugin 'vim-scripts/LargeFile'
-Plugin 'tpope/vim-surround.git'
-Plugin 'rust-lang/rust.vim'
-" Plugin 'KabbAmine/zeavim.vim'
-Plugin 'wellle/targets.vim'
-" Plugin 'easymotion/vim-easymotion'
-" Plugin 'tomtom/tcomment_vim'
-Plugin 'tommcdo/vim-exchange'
-Plugin 'luochen1990/rainbow'
-Plugin 'tpope/vim-repeat.git'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'godlygeek/tabular'
+call plug#begin(path)
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'fatih/vim-go'
+Plug 'vim-scripts/LargeFile'
+Plug 'tpope/vim-surround'
+Plug 'rust-lang/rust.vim'
+Plug 'wellle/targets.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'tomtom/tcomment_vim'
+Plug 'tommcdo/vim-exchange'
+Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-repeat'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'godlygeek/tabular'
 
-" Plugin 'sk1418/howmuch'
-Plugin 'arecarn/crunch.vim'
+Plug 'arecarn/crunch.vim'
 
-Plugin 'nishigori/increment-activator'
-Plugin 'adie/blockdiff'
-" Plugin 'exvim/ex-easyhl'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'google/vim-searchindex'
+Plug 'nishigori/increment-activator'
+Plug 'adie/blockdiff'
+Plug 'sheerun/vim-polyglot'
+Plug 'google/vim-searchindex'
+" Plug 'diffchar.vim'
+Plug 'bling/vim-airline'
+Plug 'joereynolds/place.vim'
+Plug 'jmcantrell/vim-numbered'
+Plug 'lukhio/vim-mapping-conflicts'
+Plug 'andrewradev/linediff.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'terryma/vim-expand-region'
+Plug 'tommcdo/vim-lion'
+Plug 'jmcantrell/vim-diffchanges'
+" Plugin 'ryanoasis/vim-devicons'
+Plug 'rhysd/clever-f.vim'
+Plug 'wesq3/vim-windowswap'
+Plug 'tpope/vim-characterize'
+Plug 'markonm/traces.vim'
 
-" Plugin 'chrisbra/colorizer' " requires vim 8.0
-" Plugin 'lilydjwg/colorizer' " older one but works
-
-" Plugin 'chrisbra/unicode.vim'
-" Plugin 'kana/vim-smartword'
-" Plugin 'Visual-Mark'
-Plugin 'diffchar.vim'
-Plugin 'bling/vim-airline'
-Plugin 'joereynolds/place.vim'
-Plugin 'jmcantrell/vim-numbered'
-Plugin 'lukhio/vim-mapping-conflicts'
-Plugin 'andrewradev/linediff.vim'
-" Plugin 'altercation/vim-colors-solarized'
-Plugin 'terryma/vim-expand-region'
-" Plugin 'justinmk/vim-sneak'
-Plugin 'tommcdo/vim-lion'
-Plugin 'jmcantrell/vim-diffchanges'
-Plugin 'ryanoasis/vim-devicons'
-
-call vundle#end()
+call plug#end()
 
 set nocursorcolumn
 syntax sync minlines=256
@@ -123,10 +113,11 @@ map <DOWN> gj
 map <UP> gk
 imap <UP> <ESC>gka
 imap <DOWN> <ESC>gja
+map <F12> :NERDTreeToggle<CR>
 
 "set guifont=Lucida_Console:h10
 "set guifont=Meslo_LG_S:h10
-"set guifont=Input:h10
+" set guifont=Input:h10
 " set guifont=DejaVu_Sans_Mono:h10
 set guifont=DejaVuSansMono_NF:h10
 " set guifont=AverageMono:h10
@@ -143,28 +134,12 @@ noremap k gk
 
 set colorcolumn=80
 
-" set diffexpr=MyDiff()
-" function MyDiff()
-"   let opt = '-a --binary '
-"   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-"   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-"   let arg1 = v:fname_in
-"   if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-"   let arg2 = v:fname_new
-"   if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-"   let arg3 = v:fname_out
-"   if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-"   let eq = ''
-"   if $VIMRUNTIME =~ ' '
-"     if &sh =~ '\<cmd'
-"       let cmd = '""' . $VIMRUNTIME . '\diff"'
-"       let eq = '"'
-"     else
-"       let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-"     endif
-"   else
-"     let cmd = $VIMRUNTIME . '\diff'
-"   endif
-"   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-" endfunction
-
+if has("gui_running")
+    " set guioptions=icpM
+    if has('win32') || has('win64')
+        if (v:version == 704 && has("patch393")) || v:version > 704
+            set renderoptions=type:directx,level:0.75,gamma:1.25,contrast:0.25,
+                        \geom:1,renmode:5,taamode:1
+        endif
+    endif
+endif
