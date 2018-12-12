@@ -42,10 +42,14 @@ Plug 'rhysd/clever-f.vim'
 Plug 'wesq3/vim-windowswap'
 Plug 'tpope/vim-characterize'
 Plug 'markonm/traces.vim'
+Plug 'tpope/vim-abolish'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 
-set nocursorcolumn
+" set nocursorcolumn
+set cursorcolumn
 syntax sync minlines=256
 set re=1
 
@@ -82,27 +86,35 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:strip_whitelines_at_eof=1
+
 set showcmd
 set showmatch
 set noai
 set nosmartindent
 set nocindent
 set wildmode=list:longest
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+" highlight ExtraWhitespace ctermbg=red guibg=red
+" match ExtraWhitespace /\s\+$/
+" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 set laststatus=2
 set statusline=%{&ff}\ line=%l\ (%p%%),position=%c%V,hex=0x%B\ %y\filename=%F
 
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
 " autocmd BufRead,BufNewFile *.pm setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 " autocmd BufRead,BufNewFile *.pl setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 autocmd BufRead,BufNewFile *.* setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 autocmd BufEnter * :syntax sync fromstart
+
+" ctags
+autocmd BufRead *.rs :setlocal tags=./ctags.vi;/
+" autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 :set list!
 :set list listchars=tab:>-
@@ -133,6 +145,9 @@ noremap j gj
 noremap k gk
 
 set colorcolumn=80
+
+cmap %/ <C-R>=expand("%:p:h")."/"<CR>
+cmap %. <C-R>=expand("%:p")<CR>
 
 if has("gui_running")
     " set guioptions=icpM
