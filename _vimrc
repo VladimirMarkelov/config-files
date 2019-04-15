@@ -11,25 +11,23 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'fatih/vim-go'
 Plug 'vim-scripts/LargeFile'
 Plug 'tpope/vim-surround'
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 Plug 'wellle/targets.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tomtom/tcomment_vim'
 Plug 'tommcdo/vim-exchange'
-Plug 'luochen1990/rainbow'
+" Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-repeat'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'godlygeek/tabular'
-
-Plug 'arecarn/crunch.vim'
-
+" Plug 'godlygeek/tabular'
+" Plug 'arecarn/crunch.vim'
 Plug 'nishigori/increment-activator'
 Plug 'adie/blockdiff'
 Plug 'sheerun/vim-polyglot'
 Plug 'google/vim-searchindex'
 " Plug 'diffchar.vim'
 Plug 'bling/vim-airline'
-Plug 'joereynolds/place.vim'
+" Plug 'joereynolds/place.vim'
 Plug 'jmcantrell/vim-numbered'
 Plug 'lukhio/vim-mapping-conflicts'
 Plug 'andrewradev/linediff.vim'
@@ -38,13 +36,25 @@ Plug 'terryma/vim-expand-region'
 Plug 'tommcdo/vim-lion'
 Plug 'jmcantrell/vim-diffchanges'
 " Plugin 'ryanoasis/vim-devicons'
-Plug 'rhysd/clever-f.vim'
+" Plug 'rhysd/clever-f.vim'
 Plug 'wesq3/vim-windowswap'
 Plug 'tpope/vim-characterize'
 Plug 'markonm/traces.vim'
 Plug 'tpope/vim-abolish'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'kshenoy/vim-signature'
+" Plug 'tweekmonster/startuptime.vim'
+Plug 'itchyny/vim-cursorword'
+" Plug 'jnurmine/Zenburn'
+Plug 'morhetz/gruvbox'
+" Plug 'yueyoum/vim-linemovement'
+Plug 'unblevable/quick-scope'
+Plug 'kabbamine/lazylist.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+Plug 'machakann/vim-swap'
 
 call plug#end()
 
@@ -57,8 +67,25 @@ let g:go_fmt_fail_silently = 0
 let g:go_fmt_autosave = 0
 let g:go_metalinter_autosave = 0
 let g:go_asmfmt_autosave = 0
-" let g:zv_zeal_executable = 'c:\Users\vvm\Utils\Zeal\zeal.exe'
+let g:gruvbox_contrast_dark = "soft"
 let g:rainbow_active = 1
+" let g:zv_zeal_executable = 'c:\Users\vvm\Utils\Zeal\zeal.exe'
+let g:buffergator_viewport_split_policy = "B"
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_max_chars=200
+
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsEditSplit="vertical"
+
+set scrolloff=1
+set sidescrolloff=5
+set formatoptions+=j " Delete comment character when joining commented lines
+set history=1000
+set ttimeout
+set ttimeoutlen=100
 
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
@@ -80,7 +107,8 @@ syntax on
 set background=dark
 
 " colorscheme oceandeep
-colorscheme solarized
+" colorscheme solarized
+colorscheme gruvbox
 
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -116,8 +144,9 @@ autocmd BufEnter * :syntax sync fromstart
 autocmd BufRead *.rs :setlocal tags=./ctags.vi;/
 " autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
-:set list!
-:set list listchars=tab:>-
+" :set list!
+" :set list listchars=tab:>-
+set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 
@@ -126,12 +155,20 @@ map <UP> gk
 imap <UP> <ESC>gka
 imap <DOWN> <ESC>gja
 map <F12> :NERDTreeToggle<CR>
+map <F3> :RainbowParentheses!!<CR>
+nnoremap <F5>  "=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>P
+inoremap <F5> <C-R>=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>
+nnoremap <C-F5>  "=strftime("%Y-%m-%d")<CR>P
+inoremap <C-F5> <C-R>=strftime("%Y-%m-%d")<CR>
+map s <Nop>
+map sw :let @/ = '\<' . @/ . '\>'<cr>n
 
 "set guifont=Lucida_Console:h10
 "set guifont=Meslo_LG_S:h10
 " set guifont=Input:h10
 " set guifont=DejaVu_Sans_Mono:h10
-set guifont=DejaVuSansMono_NF:h10
+" set guifont=DejaVuSansMono_NF:h10
+set guifont=Iosevka_Term:h10
 " set guifont=AverageMono:h10
 set ff=unix
 set encoding=utf-8
