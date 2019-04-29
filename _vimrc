@@ -26,7 +26,7 @@ Plug 'adie/blockdiff'
 Plug 'sheerun/vim-polyglot'
 Plug 'google/vim-searchindex'
 " Plug 'diffchar.vim'
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
 " Plug 'joereynolds/place.vim'
 Plug 'jmcantrell/vim-numbered'
 Plug 'lukhio/vim-mapping-conflicts'
@@ -55,6 +55,8 @@ Plug 'junegunn/rainbow_parentheses.vim'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 Plug 'machakann/vim-swap'
+Plug 'itchyny/lightline.vim'
+Plug 'vim-scripts/YankRing.vim'
 
 call plug#end()
 
@@ -80,6 +82,21 @@ let g:qs_max_chars=200
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " let g:UltiSnipsEditSplit="vertical"
 
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'active': {
+      \   'right': [
+      \              [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ],
+      \              [ 'spell' ],
+      \ ],
+     \ },
+     \ 'component': {
+     \   'charvaluehex': '0x%B'
+     \ },
+     \ }
+
 set scrolloff=1
 set sidescrolloff=5
 set formatoptions+=j " Delete comment character when joining commented lines
@@ -95,6 +112,10 @@ filetype plugin indent on
 filetype on
 
 let g:LargeFile = 5
+
+" speed up coloring for big files
+set lazyredraw
+set regexpengine=1
 
 " set undofile
 set modelines=0
