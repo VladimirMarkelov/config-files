@@ -3,8 +3,9 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-scripts/LargeFile'
 Plug 'tpope/vim-surround'
+" Plug 'machakann/vim-sandwich' " kind of vim-surround but with differnt key mappings
 Plug 'wellle/targets.vim'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 Plug 'tomtom/tcomment_vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-repeat'
@@ -41,7 +42,9 @@ Plug 'SidOfc/mkdx'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'sainnhe/gruvbox-material'
-Plug 'kamwitsta/nordisk'
+Plug 'farmergreg/vim-lastplace'
+Plug 'sainnhe/edge'
+" Plug 'kamwitsta/nordisk'
 call plug#end()
 
 set mouse=a " for selection with mouse
@@ -80,7 +83,7 @@ let g:lightline = {
 "                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
 let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
                         \ 'enter': { 'shift': 1 },
-                        \ 'links': { 'external': { 'enable': 0 } },
+                        \  'links': { 'external': { 'enable': 0 }, 'fragment': { 'complete': 0 } }, 
                         \ 'toc': { 'text': 'Table of Contents' },
                         \ 'fold': { 'enable': 0 } }
 let g:polyglot_disabled = ['markdown'] " for vim-polyglot users, it loads Plasticboy's markdown
@@ -105,15 +108,16 @@ set background=dark
 " let g:gruvbox_improved_warnings = 0
 " let g:gruvbox_italic = 0
 let g:gruvbox_guisp_fallback = 'bg'
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme gruvbox-material
 
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+" if has("autocmd")
+"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" endif
 
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
-let g:strip_whitelines_at_eof=1
+" let g:strip_whitelines_at_eof=1
 " let g:vimwiki_folding='list'
 
 set showcmd
@@ -178,6 +182,9 @@ setglobal fileencoding=utf-8
 
 nnoremap <leader>v V`]
 nnoremap <ESC><ESC> :nohlsearch<CR>
+xnoremap Y "*y
+nnoremap <Leader>p "*p
+nnoremap <Leader>P "*P
 
 noremap j gj
 noremap k gk
@@ -185,3 +192,7 @@ noremap k gk
 set colorcolumn=100
 
 cmap %/ <C-R>=expand("%:p:h")."/"<CR>
+
+" these two lines to autoreload an externally modified file on neovim gaining focus
+set autoread
+au FocusGained * :checktime
