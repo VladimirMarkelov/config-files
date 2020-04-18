@@ -43,7 +43,10 @@ Plug 'tacahiroy/ctrlp-funky'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'sainnhe/gruvbox-material'
 Plug 'farmergreg/vim-lastplace'
-Plug 'sainnhe/edge'
+" Plug 'sainnhe/edge'
+Plug 'pechorin/any-jump.nvim'
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'VladimirMarkelov/haku-vim'
 " Plug 'kamwitsta/nordisk'
 call plug#end()
 
@@ -142,12 +145,12 @@ autocmd BufRead *.rs :setlocal tags=./ctags.vi;/
 set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 
-map <DOWN> gj
-map <UP> gk
-imap <UP> <ESC>gka
-imap <DOWN> <ESC>gja
-map <F12> :NERDTreeToggle<CR>
-map <F3> :RainbowParentheses!!<CR>
+noremap <DOWN> gj
+noremap <UP> gk
+inoremap <UP> <ESC>gka
+inoremap <DOWN> <ESC>gja
+noremap <F12> :NERDTreeToggle<CR>
+noremap <F3> :RainbowParentheses!!<CR>
 nnoremap <F5>  "=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>P
 inoremap <F5> <C-R>=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>
 nnoremap <C-F5>  "=strftime("%Y-%m-%d")<CR>P
@@ -156,7 +159,7 @@ map s <Nop>
 map sw :let @/ = '\<' . @/ . '\>'<cr>n
 map Q gq
 nnoremap Q <Nop>
-imap jj <Esc>
+inoremap jj <Esc>
 
 " CTRLP-Funky
 nnoremap <Leader>fu :CtrlPFunky<Cr>
@@ -167,10 +170,11 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 " vnoremap <C-Insert> "+y
 " map <C-V>		"+gP
 " map <S-Insert>		"+gP
-imap <S-Insert>		"+gP
-cmap <C-V>		<C-R>+
-cmap <S-Insert>		<C-R>+
-imap <S-Insert>		<C-R>+
+inoremap <S-Insert>		"+gP
+cnoremap <C-V>		<C-R>+
+cnoremap <S-Insert>		<C-R>+
+inoremap <S-Insert>		<C-R>+
+inoremap <c-w> <c-g>u<c-w>
 
 "set guifont=Iosevka_Term:h10
 "set guifont=Iosevka\ Term:h10
@@ -189,7 +193,7 @@ nnoremap <Leader>P "*P
 noremap j gj
 noremap k gk
 
-set colorcolumn=100
+set colorcolumn=120
 
 cmap %/ <C-R>=expand("%:p:h")."/"<CR>
 
