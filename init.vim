@@ -1,6 +1,6 @@
 filetype off
 call plug#begin('~/AppData/Local/nvim/plugged')
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-scripts/LargeFile'
 Plug 'tpope/vim-surround'
 " Plug 'machakann/vim-sandwich' " kind of vim-surround but with differnt key mappings

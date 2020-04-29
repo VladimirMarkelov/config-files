@@ -7,3 +7,4 @@ Abolish wiht with
 Abolish reurn return
 Abolish reutrn return
 Abolish esle else
+Abolish deafult default
