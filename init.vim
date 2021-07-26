@@ -6,18 +6,19 @@ Plug 'tpope/vim-surround'
 " Plug 'machakann/vim-sandwich' " kind of vim-surround but with differnt key mappings
 Plug 'wellle/targets.vim'
 " Plug 'easymotion/vim-easymotion'
-Plug 'tomtom/tcomment_vim'
+" Plug 'tomtom/tcomment_vim'
+Plug 'tyru/caw.vim' " add/remove comment
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-repeat'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nishigori/increment-activator'
-Plug 'adie/blockdiff'
+" Plug 'adie/blockdiff'
 Plug 'sheerun/vim-polyglot'
 Plug 'google/vim-searchindex'
 Plug 'jmcantrell/vim-numbered'
 Plug 'lukhio/vim-mapping-conflicts'
 Plug 'andrewradev/linediff.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized' " colorscheme
 Plug 'terryma/vim-expand-region'
 Plug 'tommcdo/vim-lion'
 Plug 'jmcantrell/vim-diffchanges'
@@ -28,20 +29,20 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'kshenoy/vim-signature'
 Plug 'itchyny/vim-cursorword'
-Plug 'gruvbox-community/gruvbox'
+Plug 'gruvbox-community/gruvbox'  " colorscheme
 Plug 'unblevable/quick-scope'
-Plug 'kabbamine/lazylist.vim'
+" Plug 'kabbamine/lazylist.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'machakann/vim-swap'
+" Plug 'machakann/vim-swap'
 Plug 'itchyny/lightline.vim'
 Plug 'shinchu/lightline-gruvbox.vim'
 " Plug 'vimwiki/vimwiki'
-Plug 'ajmwagar/vim-deus'
+Plug 'ajmwagar/vim-deus'  " colorscheme
 Plug 'reedes/vim-wordy'
 " Plug 'SidOfc/mkdx'
 Plug 'tacahiroy/ctrlp-funky'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'sainnhe/gruvbox-material'
+" Plug 'norcalli/nvim-colorizer.lua'
+" Plug 'sainnhe/gruvbox-material'  " colorscheme
 Plug 'farmergreg/vim-lastplace'
 " Plug 'sainnhe/edge'
 " Plug 'pechorin/any-jump.nvim'
@@ -51,8 +52,18 @@ Plug 'joereynolds/place.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'majutsushi/tagbar'
 " Plug 'kamwitsta/nordisk'
-Plug 'hardcoreplayers/oceanic-material'
-Plug 'mzlogin/vim-markdown-toc'
+Plug 'hardcoreplayers/oceanic-material'  " colorscheme
+" Plug 'mzlogin/vim-markdown-toc'
+" Plug 'mg979/vim-visual-multi'
+" Plug 'AndrewRadev/sideways.vim'  " move function arguments etc around
+Plug 'srcery-colors/srcery-vim'  " colorscheme
+Plug 'sainnhe/forest-night'  " colorscheme
+" Plug 'AndrewRadev/splitjoin.vim'
+Plug 'godlygeek/tabular'
+Plug 'franbach/miramare' " colorscheme
+Plug 'junegunn/vim-peekaboo'
+Plug 'dkarter/bullets.vim'
+Plug 'matze/vim-move'
 call plug#end()
 
 set mouse=a " for selection with mouse
@@ -71,12 +82,20 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:qs_max_chars=200
 let g:buffergator_viewport_split_policy = "B"
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+" let g:srcery_undercurl = 0 " just hides all spelling errors
+let g:miramare_enable_italic = 0
+let g:miramare_disable_italic_comment = 1
+
+" let g:surround_{char2nr("b")} = "[b]\r[/b]"
+" let g:surround_{char2nr("i")} = "[i]\r[/i]"
+" let g:surround_{char2nr("q")} = "[quote]\r[/quote]" 
 
 " set clipboard+=unnamedplus
 
 "      \ 'colorscheme': 'jellybeans',
+"      \ 'colorscheme': 'gruvbox',
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'everforest',
       \ 'active': {
       \   'right': [
       \              [ 'lineinfo' ],
@@ -97,8 +116,9 @@ let g:vmt_auto_update_on_save = 0
 "                        \  'links': { 'external': { 'enable': 0 }, 'fragment': { 'complete': 0 } }, 
 "                        \ 'toc': { 'text': 'Table of Contents' },
 "                        \ 'fold': { 'enable': 0 } }
-let g:polyglot_disabled = ['markdown'] " for vim-polyglot users, it loads Plasticboy's markdown
-                                       " plugin which unfortunately interferes with mkdx list indentation
+"let g:polyglot_disabled = ['markdown'] " for vim-polyglot users, it loads Plasticboy's markdown
+"                                       " plugin which unfortunately interferes with mkdx list indentation
+
 set scrolloff=1
 set sidescrolloff=5
 set formatoptions+=j " Delete comment character when joining commented lines
@@ -112,6 +132,7 @@ set modelines=0
 set nu
 set hlsearch
 " set columns=999 lines=999
+set showbreak=↪\ 
 
 set termguicolors " for neovide
 "set linespace=-1 " for cascadia code
@@ -121,8 +142,11 @@ set background=dark
 " let g:gruvbox_improved_warnings = 0
 " let g:gruvbox_italic = 0
 let g:gruvbox_guisp_fallback = 'bg'
-colorscheme gruvbox
+let g:srcery_guisp_fallback = 'bg'
+" colorscheme gruvbox
 " colorscheme gruvbox-material
+colorscheme everforest
+" colorscheme srcery
 
 " if has("autocmd")
 "   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -180,8 +204,13 @@ map s <Nop>
 map sw :let @/ = '\<' . @/ . '\>'<cr>n
 map Q gq
 nnoremap Q <Nop>
-inoremap jj <Esc>
+" inoremap jj <Esc>  " to train Ctrl+[
 nmap ga <Plug>(place-insert)
+
+" AndrewRadev/sideways.vim
+" nnoremap <C-H> :SidewaysLeft<cr>
+" nnoremap <C-L> :SidewaysRight<cr>
+
 
 " CTRLP-Funky
 nnoremap <Leader>fu :CtrlPFunky<Cr>
@@ -201,7 +230,14 @@ inoremap <c-w> <c-g>u<c-w>
 "set guifont=Iosevka_Term:h14
 "set guifont=Iosevka\ Term:h10
 "set guifont=Fantasque\ Sans\ Mono:h10
-set guifont=Cascadia\ Mono\ PL\ SemiLight:h14
+if exists("g:nvy")
+    " set guifont=Cascadia\ Mono\ PL:h10
+    set guifont=Iosevka\ Fixed:h11
+else
+    " set guifont=Cascadia\ Mono\ PL:h14	
+    set guifont=Iosevka\ Fixed:h14
+endif
+
 set ff=unix
 set encoding=utf-8
 setglobal fileencoding=utf-8
@@ -223,10 +259,10 @@ noremap k gk
 " nnoremap H 0
 
 " make <c-j>, <c-k>, <c-l>, and <c-h> scroll the screen.
-nnoremap <c-j> <c-e>
-nnoremap <c-k> <c-y>
-nnoremap <c-l> zl
-nnoremap <c-h> zh
+" nnoremap <c-j> <c-e>
+" nnoremap <c-k> <c-y>
+" nnoremap <c-l> zl
+" nnoremap <c-h> zh
 
 set colorcolumn=120
 
