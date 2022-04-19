@@ -7,6 +7,8 @@ Abolish waht what
 Abolish wiht with
 Abolish reurn return
 Abolish reutrn return
+Abolish erturn return
 Abolish esle else
 Abolish deafult default
-Abolish slef self
+Abolish s{lef,efl} self
+Abolish {,u}szie {,u}size

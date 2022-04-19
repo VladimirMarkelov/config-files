@@ -1,0 +1,42 @@
+# for Emacs: -*- coding: utf-8 -*-
+
+# Russian Ruble sign
+<Multi_key> <P> <minus>		: "₽"	# Russian ruble sign
+<Multi_key> <p> <minus>		: "₽"	# Russian ruble sign
+<Multi_key> <i> <d> <l>     : "¯\\(°_o)/¯" # i dunno lol
+
+
+<Multi_key> <h> <less> : "ȟ"    # Lakota h + <
+<Multi_key> <less> <h> : "ȟ"    # Lakota h + <
+<Multi_key> <g> <less> : "ǧ"    # Lakota g + <
+<Multi_key> <G> <less> : "Ǧ"    # Lakota G + <
+<Multi_key> <less> <g> : "ǧ"    # Lakota g + <
+<Multi_key> <less> <G> : "Ǧ"    # Lakota G + <
+<Multi_key> <H> <less> : "Ȟ"    # Lakota H + <
+<Multi_key> <less> <H> : "Ȟ"    # Lakota H + <
+<Multi_key> <apostrophe> <asciicircum> <asciicircum>: "ʼ"  # Lakota '
+
+<Multi_key> <o> <bar> <bar> : "ө"    # Mongolian barred o
+<Multi_key> <bar> <bar> <o> : "ө"    # Mongolian barred o
+<Multi_key> <O> <bar> <bar> : "Ө"    # Mongolian barred O
+<Multi_key> <bar> <bar> <O> : "Ө"    # Mongolian barred O
+<Multi_key> <y> <bar> <bar> : "ү"    # Mongolian barred y
+<Multi_key> <bar> <bar> <y> : "ү"    # Mongolian barred y
+<Multi_key> <Y> <bar> <bar> : "Ү"    # Mongolian barred Y
+<Multi_key> <bar> <bar> <Y> : "Ү"    # Mongolian barred Y
+
+<Multi_key> <i> <i> <comma> : "į"    # Navajo i
+<Multi_key> <I> <I> <comma> : "Į"    # Navajo I
+<Multi_key> <o> <o> <comma> : "ǫ́"    # Navajo o
+<Multi_key> <O> <O> <comma> : "Ǫ́"    # Navajo O
+<Multi_key> <e> <e> <comma> : "ę́"    # Navajo e
+<Multi_key> <E> <E> <comma> : "Ę́"    # Navajo E
+<Multi_key> <a> <a> <comma> : "ą́"    # Navajo a
+<Multi_key> <A> <A> <comma> : "Ą́"    # Navajo A
+
+<Multi_key> <grave> <g> : "ґ" # Ukrainian Ghe
+<Multi_key> <grave> <G> : "Ґ" # Ukrainian Ghe
+<Multi_key> <e> <slash> : "є" # Ukrainian Ye
+<Multi_key> <E> <slash> : "Є" # Ukrainian Ye
+<Multi_key> <i> <o> : "і" # Ukrainian і
+<Multi_key> <I> <O> : "І" # Ukrainian І
