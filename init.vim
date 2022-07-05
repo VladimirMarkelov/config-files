@@ -1,65 +1,75 @@
-filetype off
-call plug#begin('~/AppData/Local/nvim/plugged')
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'vim-scripts/LargeFile'
-Plug 'tpope/vim-surround'
-" Plug 'machakann/vim-sandwich' " kind of vim-surround but with differnt key mappings
-Plug 'wellle/targets.vim'
-" Plug 'easymotion/vim-easymotion'
-Plug 'tomtom/tcomment_vim'
-" Plug 'tyru/caw.vim' " add/remove comment
-Plug 'tommcdo/vim-exchange'
-Plug 'tpope/vim-repeat'
-" Plug 'ctrlpvim/ctrlp.vim'
-Plug 'nishigori/increment-activator'
-" Plug 'adie/blockdiff'
-Plug 'sheerun/vim-polyglot'
-Plug 'google/vim-searchindex'
-Plug 'jmcantrell/vim-numbered'
-Plug 'lukhio/vim-mapping-conflicts'
-Plug 'andrewradev/linediff.vim'
-Plug 'altercation/vim-colors-solarized' " colorscheme
-Plug 'terryma/vim-expand-region'
-Plug 'tommcdo/vim-lion'
-Plug 'jmcantrell/vim-diffchanges'
-" Plug 'tpope/vim-characterize'
-Plug 'markonm/traces.vim'
-Plug 'tpope/vim-abolish'
-Plug 'jeetsukumaran/vim-buffergator'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'kshenoy/vim-signature'
-Plug 'itchyny/vim-cursorword'
-Plug 'gruvbox-community/gruvbox'  " colorscheme
-Plug 'unblevable/quick-scope'
-Plug 'junegunn/rainbow_parentheses.vim'
-" Plug 'machakann/vim-swap'
-Plug 'itchyny/lightline.vim'
-" Plug 'shinchu/lightline-gruvbox.vim'
-" Plug 'vimwiki/vimwiki'
-Plug 'reedes/vim-wordy'
-" Plug 'tacahiroy/ctrlp-funky'
-" Plug 'sainnhe/gruvbox-material'  " colorscheme
-Plug 'farmergreg/vim-lastplace'
-Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'VladimirMarkelov/haku-vim'
-Plug 'joereynolds/place.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'majutsushi/tagbar'
-" Plug 'hardcoreplayers/oceanic-material'  " colorscheme
-" Plug 'mg979/vim-visual-multi'
-" Plug 'AndrewRadev/sideways.vim'  " move function arguments etc around
-Plug 'sainnhe/forest-night'  " colorscheme
-" Plug 'AndrewRadev/splitjoin.vim'
-Plug 'godlygeek/tabular'
-" Plug 'franbach/miramare' " colorscheme
-Plug 'junegunn/vim-peekaboo'
-Plug 'dkarter/bullets.vim'
-Plug 'matze/vim-move'
-Plug 'EdenEast/nightfox.nvim'
-Plug 'rust-lang/rust.vim'
-Plug 'NLKNguyen/papercolor-theme'  " Good light colorscheme
-" Plug 'savq/melange'  " Good light colorscheme
-call plug#end()
+"filetype off
+"call plug#begin('~/AppData/Local/nvim/plugged')
+"" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"Plug 'vim-scripts/LargeFile'
+"Plug 'tpope/vim-surround'
+"" Plug 'machakann/vim-sandwich' " kind of vim-surround but with differnt key mappings
+"Plug 'wellle/targets.vim'
+"" Plug 'easymotion/vim-easymotion'
+"Plug 'tomtom/tcomment_vim' " VimL plugin
+"" Plug 'numToStr/Comment.nvim' " Lua plugin - shows ugly error on file without comment support
+"" Plug 'tyru/caw.vim' " add/remove comment
+"Plug 'tommcdo/vim-exchange'
+"Plug 'tpope/vim-repeat'
+"" Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'nishigori/increment-activator'
+"" Plug 'adie/blockdiff'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'google/vim-searchindex'
+"Plug 'jmcantrell/vim-numbered'
+"Plug 'lukhio/vim-mapping-conflicts'
+"Plug 'andrewradev/linediff.vim'
+"Plug 'altercation/vim-colors-solarized' " colorscheme
+"Plug 'terryma/vim-expand-region'
+"Plug 'tommcdo/vim-lion'
+"Plug 'jmcantrell/vim-diffchanges'
+"" Plug 'tpope/vim-characterize'
+"Plug 'markonm/traces.vim'
+"Plug 'tpope/vim-abolish'
+"Plug 'jeetsukumaran/vim-buffergator'
+"Plug 'ntpeters/vim-better-whitespace'
+"Plug 'kshenoy/vim-signature'
+"Plug 'itchyny/vim-cursorword'
+"Plug 'gruvbox-community/gruvbox'  " colorscheme
+"Plug 'unblevable/quick-scope'
+"" Plug 'junegunn/rainbow_parentheses.vim'
+"" Plug 'machakann/vim-swap'
+"Plug 'itchyny/lightline.vim'
+"" Plug 'shinchu/lightline-gruvbox.vim'
+"" Plug 'vimwiki/vimwiki'
+"Plug 'reedes/vim-wordy'
+"" Plug 'tacahiroy/ctrlp-funky'
+"" Plug 'sainnhe/gruvbox-material'  " colorscheme
+"Plug 'farmergreg/vim-lastplace'
+"Plug 'powerman/vim-plugin-AnsiEsc'
+"" Plug 'VladimirMarkelov/haku-vim'
+"Plug 'joereynolds/place.vim'
+"Plug 'editorconfig/editorconfig-vim'
+"Plug 'majutsushi/tagbar'
+"" Plug 'hardcoreplayers/oceanic-material'  " colorscheme
+"" Plug 'mg979/vim-visual-multi'
+"" Plug 'AndrewRadev/sideways.vim'  " move function arguments etc around
+"Plug 'sainnhe/forest-night'  " colorscheme
+"" Plug 'AndrewRadev/splitjoin.vim'
+"Plug 'godlygeek/tabular'
+"" Plug 'franbach/miramare' " colorscheme
+"Plug 'junegunn/vim-peekaboo'
+"Plug 'dkarter/bullets.vim'
+"" Plug 'matze/vim-move'
+"Plug 'EdenEast/nightfox.nvim'
+"Plug 'rust-lang/rust.vim'
+"Plug 'NLKNguyen/papercolor-theme'  " Good light colorscheme
+"Plug 'NoahTheDuke/vim-just'
+"" Plug 'savq/melange'  " Good light colorscheme
+"call plug#end()
+
+" set up lua plugins
+" Setting up 'numToStr/Comment.nvim'
+"lua << EOF
+"  require('Comment').setup()
+"EOF
+
+lua require("user.plugins")
 
 set mouse=a " for selection with mouse
 set cursorcolumn
@@ -106,7 +116,7 @@ let g:vmt_dont_insert_fence = 0
 let g:vmt_auto_update_on_save = 0
 " let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
 "                        \ 'enter': { 'shift': 1 },
-"                        \  'links': { 'external': { 'enable': 0 }, 'fragment': { 'complete': 0 } }, 
+"                        \  'links': { 'external': { 'enable': 0 }, 'fragment': { 'complete': 0 } },
 "                        \ 'toc': { 'text': 'Table of Contents' },
 "                        \ 'fold': { 'enable': 0 } }
 "let g:polyglot_disabled = ['markdown'] " for vim-polyglot users, it loads Plasticboy's markdown
@@ -167,9 +177,9 @@ set wildmode=list:longest
 set noshowmode
 set noruler
 set laststatus=2
-set tabstop=4 
-set expandtab 
-set shiftwidth=4 
+set tabstop=4
+set expandtab
+set shiftwidth=4
 set softtabstop=4
 set shortmess=at
 
@@ -193,7 +203,7 @@ set spellsuggest+=10
 
 set breakindent
 set breakindentopt=shift:2
-" set showbreak=↪\ 
+" set showbreak=↪\
 set showbreak=↳
 
 " Fix autoindent for YAML - DO NOT indent a line when commenting a line
@@ -207,9 +217,9 @@ inoremap <DOWN> <ESC>gja
 " noremap <F12> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 noremap <F3> :RainbowParentheses!!<CR>
-nnoremap <F5>  "=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>P
+nnoremap <F5>  "=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>p
 inoremap <F5> <C-R>=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>
-nnoremap <C-F5>  "=strftime("%Y-%m-%d")<CR>P
+nnoremap <C-F5>  "=strftime("%Y-%m-%d")<CR>p
 inoremap <C-F5> <C-R>=strftime("%Y-%m-%d")<CR>
 map s <Nop>
 " map sw :let @/ = '\<' . @/ . '\>'<cr>n
@@ -231,9 +241,9 @@ nnoremap C "_C
 
 
 " CTRLP-Funky
-nnoremap <Leader>fu :CtrlPFunky<Cr>
+" nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+" nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 " vnoremap <C-C> "+y
 " vnoremap <C-Insert> "+y
@@ -253,9 +263,12 @@ if exists("g:nvy")
     set guifont=Iosevka\ Fixed:h11
     " set guifont=Victor\ Mono:h10
 else
-    " set guifont=Cascadia\ Mono\ PL:h14	
-    set guifont=Iosevka\ Fixed:h14
+    " set guifont=Cascadia\ Mono\ PL:h14
+    set guifont=Iosevka\ Fixed:h12
 endif
+
+" For neovide
+" let g:neovide_remember_window_size = v:true
 
 set fileformat=unix
 set fileformats=unix,dos
@@ -269,8 +282,8 @@ xnoremap Y "*y
 nnoremap <Leader>p "*p
 nnoremap <Leader>P "*P
 
-noremap j gj
-noremap k gk
+" noremap j gj
+" noremap k gk
 
 " make J, K, L, and H move the cursor MORE.
 " nnoremap J } " conflicts with "join lines"
