@@ -32,8 +32,8 @@ packer.init({
 )
 
 return require('packer').startup(function()
+	use 'wbthomason/packer.nvim'
 	use 'vim-scripts/LargeFile'
-	use 'tpope/vim-surround'
 	use 'wellle/targets.vim'
 	-- use 'tomtom/tcomment_vim' " VimL plugin
 	use {
@@ -41,6 +41,15 @@ return require('packer').startup(function()
         config = function() require('Comment').setup() end
     } -- Lua plugin - shows ugly error on file without comment support
 	-- use 'tyru/caw.vim' " add/remove comment
+	-- use 'tpope/vim-surround' -- like nvim-suround but written in VimL
+	use {
+		'kylechui/nvim-surround',
+		config = function()
+    	    require("nvim-surround").setup({
+        	    -- Configuration here, or leave empty to use defaults
+	        })
+	    end
+	}
 	use 'tommcdo/vim-exchange'
 	use 'tpope/vim-repeat'
 	use 'nishigori/increment-activator'
@@ -78,4 +87,22 @@ return require('packer').startup(function()
 	use 'rust-lang/rust.vim'
 	use 'NLKNguyen/papercolor-theme'  -- Good light colorscheme
 	use 'NoahTheDuke/vim-just'
+	use {
+		'catppuccin/vim',
+		as=catppuccin
+	}
+	use {
+		'dcampos/nvim-snippy',
+		config = function() require('snippy').setup({
+			mappings = {
+		        [{'i', 's'}] = {
+        		   ['<Tab>'] = 'expand_or_advance',
+		           ['<S-Tab>'] = 'previous',
+		        },
+		        [{'x'}] = {
+          			  ['<Tab>'] = 'cut_text',
+			    }
+		    },
+		}) end
+	}
 end)

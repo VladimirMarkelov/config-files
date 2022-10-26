@@ -71,6 +71,8 @@
 
 lua require("user.plugins")
 
+let g:neovide_no_idle=v:true
+
 set mouse=a " for selection with mouse
 set cursorcolumn
 syntax sync minlines=256
