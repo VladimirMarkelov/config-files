@@ -1,97 +1,87 @@
 local fn = vim.fn
 
--- Automatically install packer
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  print("Installing packer close and reopen Neovim...")
+-- Automatically install lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
---vim.cmd([[
---  augroup packer_user_config
---    autocmd!
---    autocmd BufWritePost plugins.lua source <afile> | PackerSync
---  augroup end
---]])
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
-
--- Have packer use a popup window
-packer.init({
-    display = {
-      open_fn = function()
-        return require('packer.util').float({ border = 'single' })
-      end
-    }
-  }
-)
-
-return require('packer').startup(function()
-	use 'wbthomason/packer.nvim'
-	use 'vim-scripts/LargeFile'
-	use 'wellle/targets.vim'
-	-- use 'tomtom/tcomment_vim' " VimL plugin
-	use {
+return require('lazy').setup({
+	'vim-scripts/LargeFile',
+	'wellle/targets.vim',
+	{
         'numToStr/Comment.nvim',
         config = function() require('Comment').setup() end
-    } -- Lua plugin - shows ugly error on file without comment support
-	-- use 'tyru/caw.vim' " add/remove comment
-	-- use 'tpope/vim-surround' -- like nvim-suround but written in VimL
-	use {
+    }, -- Lua plugin - shows ugly error on file without comment support
+	{
 		'kylechui/nvim-surround',
 		config = function()
     	    require("nvim-surround").setup({
         	    -- Configuration here, or leave empty to use defaults
 	        })
 	    end
-	}
-	use 'tommcdo/vim-exchange'
-	use 'tpope/vim-repeat'
-	use 'nishigori/increment-activator'
-	use 'sheerun/vim-polyglot'
-	use 'google/vim-searchindex'
-	use 'jmcantrell/vim-numbered'
-	use 'lukhio/vim-mapping-conflicts'
-	use 'andrewradev/linediff.vim'
-	use 'altercation/vim-colors-solarized' -- colorscheme
-	use 'terryma/vim-expand-region'
-	use 'tommcdo/vim-lion'
-	use 'jmcantrell/vim-diffchanges'
-	-- use 'tpope/vim-characterize'
-	use 'markonm/traces.vim'
-	use 'tpope/vim-abolish'
-	use 'jeetsukumaran/vim-buffergator'
-	use 'ntpeters/vim-better-whitespace'
-	use 'kshenoy/vim-signature'
-	use 'itchyny/vim-cursorword'
-	use 'gruvbox-community/gruvbox'  -- colorscheme
-	use 'unblevable/quick-scope'
-	-- use 'junegunn/rainbow_parentheses.vim'
-	use 'itchyny/lightline.vim'
-	use 'reedes/vim-wordy'
-	use 'farmergreg/vim-lastplace'
-	use 'powerman/vim-plugin-AnsiEsc'
-	use 'joereynolds/place.vim'
-	use 'editorconfig/editorconfig-vim'
-	use 'majutsushi/tagbar'
-	use 'sainnhe/forest-night'  -- colorscheme
-	use 'godlygeek/tabular'
-	use 'junegunn/vim-peekaboo'
-	use 'dkarter/bullets.vim'
-	use 'EdenEast/nightfox.nvim'
-	use 'rust-lang/rust.vim'
-	use 'NLKNguyen/papercolor-theme'  -- Good light colorscheme
-	use 'NoahTheDuke/vim-just'
-	use {
-		'catppuccin/vim',
-		as=catppuccin
-	}
-	use {
+	},
+	'tommcdo/vim-exchange',
+	'tpope/vim-repeat',
+	'nishigori/increment-activator',
+	'sheerun/vim-polyglot',
+	-- use 'google/vim-searchindex', -- since vim 8.1.1270 it can be replaced with ":set shortmess-=S"
+	'jmcantrell/vim-numbered',
+	'lukhio/vim-mapping-conflicts',
+	'andrewradev/linediff.vim',
+	'altercation/vim-colors-solarized', -- colorscheme
+	'terryma/vim-expand-region',
+	'tommcdo/vim-lion',
+	'jmcantrell/vim-diffchanges',
+	-- use 'tpope/vim-characterize',
+	'markonm/traces.vim',
+	'tpope/vim-abolish',
+	-- 'jeetsukumaran/vim-buffergator',
+	'ntpeters/vim-better-whitespace',
+	'kshenoy/vim-signature',
+	'itchyny/vim-cursorword', -- in VimScript
+	--{
+	--	'unblevable/quick-scope', -- does not work with lazy
+	--	config = function()
+	--		vim.cmd [[
+	--			" Trigger a highlight in the appropriate direction when pressing these keys:
+    --			let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+    --  			highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=underline
+    --  			highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline
+    -- 			let g:qs_max_chars=150
+	--	    ]]
+	--    end,
+	--}, -- does not work with lazy
+	-- use 'junegunn/rainbow_parentheses.vim',
+	'itchyny/lightline.vim',
+	'reedes/vim-wordy',
+	'farmergreg/vim-lastplace',
+	'powerman/vim-plugin-AnsiEsc',
+	'joereynolds/place.vim',
+	-- use 'editorconfig/editorconfig-vim', -- NeoVim built-in since 0.9
+	-- 'majutsushi/tagbar',
+	'sainnhe/forest-night',  -- colorscheme
+	'godlygeek/tabular',
+	-- 'junegunn/vim-peekaboo', -- show you the contents of the registers
+	'dkarter/bullets.vim',
+	'NLKNguyen/papercolor-theme',  -- Good light colorscheme
+	'NoahTheDuke/vim-just',
+	-- use 'yaocccc/nvim-hlchunk', -- highlite block of code (draws a "bracket" at the left)
+	'gruvbox-community/gruvbox',  -- colorscheme
+	'sainnhe/edge',  -- colorscheme
+	'savq/melange-nvim',  -- colorscheme
+	'Shatur/neovim-ayu',  -- colorscheme
+	-- 'ludovicchabant/vim-gutentags', -- automatic tags management
+	'ramojus/mellifluous.nvim', -- colorscheme
+	{
 		'dcampos/nvim-snippy',
 		config = function() require('snippy').setup({
 			mappings = {
@@ -104,5 +94,38 @@ return require('packer').startup(function()
 			    }
 		    },
 		}) end
-	}
-end)
+	},
+	-- {
+	-- 	'axkirillov/hbac.nvim',
+	-- 	config = function () require("hbac").setup({
+	-- 		autoclose = true, -- set autoclose to false if you want to close manually
+	-- 		threshold = 8, -- hbac will start closing unedited buffers once that number is reached
+	-- 		close_command = function(bufnr)
+	-- 			vim.api.nvim_buf_delete(bufnr, {})
+	-- 		end,
+	-- 		close_buffers_with_windows = false, -- hbac will close buffers with associated windows if this option is `true`
+	-- 	}) end
+	-- },
+	{ "rose-pine/neovim", name = "rose-pine" },
+	'yorickpeterse/vim-paper', -- light colorscheme
+	'ctrlpvim/ctrlp.vim', -- main plugin
+	'tacahiroy/ctrlp-funky', -- requires ctrlp.vim
+	{
+		'matbme/JABS.nvim',
+		config = function() require('jabs').setup({
+			use_devicons = false,
+			symbols = {
+		        current = "C", -- default 
+    		    split = "S", -- default 
+        		alternate = "A", -- default 
+		        hidden = "H", -- default ﬘
+    		    locked = "L", -- default 
+        		ro = "R", -- default 
+	        	edited = "E", -- default 
+	    	    terminal = "T", -- default 
+    	    	default_file = "D", -- Filetype icon if not present in nvim-web-devicons. Default 
+	    	    terminal_symbol = ">_" -- Filetype icon for a terminal split. Default 
+	    	}
+    	}) end
+    },
+})

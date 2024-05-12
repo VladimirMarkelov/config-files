@@ -1,70 +1,3 @@
-"filetype off
-"call plug#begin('~/AppData/Local/nvim/plugged')
-"" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"Plug 'vim-scripts/LargeFile'
-"Plug 'tpope/vim-surround'
-"" Plug 'machakann/vim-sandwich' " kind of vim-surround but with differnt key mappings
-"Plug 'wellle/targets.vim'
-"" Plug 'easymotion/vim-easymotion'
-"Plug 'tomtom/tcomment_vim' " VimL plugin
-"" Plug 'numToStr/Comment.nvim' " Lua plugin - shows ugly error on file without comment support
-"" Plug 'tyru/caw.vim' " add/remove comment
-"Plug 'tommcdo/vim-exchange'
-"Plug 'tpope/vim-repeat'
-"" Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'nishigori/increment-activator'
-"" Plug 'adie/blockdiff'
-"Plug 'sheerun/vim-polyglot'
-"Plug 'google/vim-searchindex'
-"Plug 'jmcantrell/vim-numbered'
-"Plug 'lukhio/vim-mapping-conflicts'
-"Plug 'andrewradev/linediff.vim'
-"Plug 'altercation/vim-colors-solarized' " colorscheme
-"Plug 'terryma/vim-expand-region'
-"Plug 'tommcdo/vim-lion'
-"Plug 'jmcantrell/vim-diffchanges'
-"" Plug 'tpope/vim-characterize'
-"Plug 'markonm/traces.vim'
-"Plug 'tpope/vim-abolish'
-"Plug 'jeetsukumaran/vim-buffergator'
-"Plug 'ntpeters/vim-better-whitespace'
-"Plug 'kshenoy/vim-signature'
-"Plug 'itchyny/vim-cursorword'
-"Plug 'gruvbox-community/gruvbox'  " colorscheme
-"Plug 'unblevable/quick-scope'
-"" Plug 'junegunn/rainbow_parentheses.vim'
-"" Plug 'machakann/vim-swap'
-"Plug 'itchyny/lightline.vim'
-"" Plug 'shinchu/lightline-gruvbox.vim'
-"" Plug 'vimwiki/vimwiki'
-"Plug 'reedes/vim-wordy'
-"" Plug 'tacahiroy/ctrlp-funky'
-"" Plug 'sainnhe/gruvbox-material'  " colorscheme
-"Plug 'farmergreg/vim-lastplace'
-"Plug 'powerman/vim-plugin-AnsiEsc'
-"" Plug 'VladimirMarkelov/haku-vim'
-"Plug 'joereynolds/place.vim'
-"Plug 'editorconfig/editorconfig-vim'
-"Plug 'majutsushi/tagbar'
-"" Plug 'hardcoreplayers/oceanic-material'  " colorscheme
-"" Plug 'mg979/vim-visual-multi'
-"" Plug 'AndrewRadev/sideways.vim'  " move function arguments etc around
-"Plug 'sainnhe/forest-night'  " colorscheme
-"" Plug 'AndrewRadev/splitjoin.vim'
-"Plug 'godlygeek/tabular'
-"" Plug 'franbach/miramare' " colorscheme
-"Plug 'junegunn/vim-peekaboo'
-"Plug 'dkarter/bullets.vim'
-"" Plug 'matze/vim-move'
-"Plug 'EdenEast/nightfox.nvim'
-"Plug 'rust-lang/rust.vim'
-"Plug 'NLKNguyen/papercolor-theme'  " Good light colorscheme
-"Plug 'NoahTheDuke/vim-just'
-"" Plug 'savq/melange'  " Good light colorscheme
-"call plug#end()
-
-" set up lua plugins
-" Setting up 'numToStr/Comment.nvim'
 "lua << EOF
 "  require('Comment').setup()
 "EOF
@@ -157,8 +90,9 @@ syntax on
 
 " -------- Light colorscheme ---------- begin
 set background=light
-" colorscheme PaperColor
-colorscheme everforest
+colorscheme PaperColor
+" colorscheme everforest
+" colorscheme mellifluous
 " -------- Light colorscheme ---------- end
 
 " if has("autocmd")
@@ -183,21 +117,21 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-set shortmess=at
+set shortmess=at " removing S from settings (set shortmess-=S) displays the number of occurencies since vim 8.1.1270
 
 " relative numbering with current line absolute number
-set number relativenumber
-augroup numbertoggle
-	autocmd!
-	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+" set number relativenumber
+" augroup numbertoggle
+" 	autocmd!
+" 	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+" 	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+" augroup END
 
 " autocmd BufRead,BufNewFile *.* setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 autocmd BufEnter * :syntax sync fromstart
 
 " ctags
-autocmd BufRead *.rs :setlocal tags=./ctags.vi;/
+" autocmd BufRead *.rs :setlocal tags=./ctags.vi;/
 
 set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set backspace=indent,eol,start whichwrap+=<,>,[,]
@@ -257,17 +191,31 @@ cnoremap <S-Insert>		<C-R>+
 inoremap <S-Insert>		<C-R>+
 inoremap <c-w> <c-g>u<c-w>
 
+" bufer list by roblillack/vim-bufferlist
+"map <leader><b> :call BufferList()<CR>
+
+" Ctrp-Funky
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>uu :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
 "set guifont=Iosevka_Term:h14
 "set guifont=Iosevka\ Term:h10
 "set guifont=Fantasque\ Sans\ Mono:h10
 if exists("g:nvy")
-    " set guifont=Cascadia\ Mono\ PL:h10
-    set guifont=Iosevka\ Fixed:h11
-    " set guifont=Victor\ Mono:h10
+    set guifont=JuliaMono:h11
 else
     " set guifont=Cascadia\ Mono\ PL:h14
-    set guifont=Iosevka\ Fixed:h12
+    set guifont=JuliaMono:h11
 endif
+
+if exists("g:neovide")
+    set guifont=JuliaMono:h11
+    set columns=140
+    set lines=45
+endif
+" set columns=140
+" set lines=45
 
 " For neovide
 " let g:neovide_remember_window_size = v:true
@@ -283,6 +231,8 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 xnoremap Y "*y
 nnoremap <Leader>p "*p
 nnoremap <Leader>P "*P
+
+nnoremap <Leader>b :JABSOpen<Cr>
 
 " noremap j gj
 " noremap k gk
