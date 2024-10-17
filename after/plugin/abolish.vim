@@ -12,3 +12,4 @@ Abolish esle else
 Abolish deafult default
 Abolish s{lef,efl} self
 Abolish {,u}szie {,u}size
+Abolish hoem home

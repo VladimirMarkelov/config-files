@@ -47,7 +47,13 @@ return require('lazy').setup({
 	-- 'jeetsukumaran/vim-buffergator',
 	'ntpeters/vim-better-whitespace',
 	'kshenoy/vim-signature',
-	'itchyny/vim-cursorword', -- in VimScript
+	-- 'itchyny/vim-cursorword', -- in VimScript
+	-- 'RRethy/vim-illuminate', -- like vim-cursorword but in LUA
+	{
+		"sontungexpt/stcursorword",
+		event = "VeryLazy",
+		config = true,
+	},
 	--{
 	--	'unblevable/quick-scope', -- does not work with lazy
 	--	config = function()
